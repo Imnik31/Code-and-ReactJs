@@ -5,7 +5,7 @@ import './App.css'
 
 function App() {
 
-  let [counter, setCounter]  = useState(15)
+  let [counter, setCounter]  = useState(15)              // useState hook is used to propagate change in UI
 
   //let counter = 15
 
@@ -37,3 +37,5 @@ function App() {
 }
 
 export default App
+
+// Assignment to set the values value in the ounter max to 20 and min 0
