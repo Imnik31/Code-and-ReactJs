@@ -9,9 +9,9 @@ function App() {
   const [password, setPassword] = useState("")
 
   //useRef hook
-  const passwordRef = useRef(null)
+  const passwordRef = useRef(null)   // first create a variable from use ref hook.   for reference 
 
-  const passwordGenerator = useCallback(() => {
+  const passwordGenerator = useCallback(() => {              // usecallback hook => react hook that lets you cache a function definition between re-renders
     let pass = ""
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     if (numberAllowed) str += "0123456789"
@@ -19,24 +19,24 @@ function App() {
 
     for (let i = 1; i <= length; i++) {
       let char = Math.floor(Math.random() * str.length + 1)
-      pass += str.charAt(char)
+      pass += str.charAt(char)                                     // to generate the password
       
     }
 
     setPassword(pass)
 
 
-  }, [length, numberAllowed, charAllowed, setPassword])
+  }, [length, numberAllowed, charAllowed, setPassword])      // dependency for memorize purpose optimization
 
   const copyPasswordToClipboard = useCallback(() => {
-    passwordRef.current?.select();
+    passwordRef.current?.select();                     // want to know if password selected or not in UI
     passwordRef.current?.setSelectionRange(0, 999);
-    window.navigator.clipboard.writeText(password)
+    window.navigator.clipboard.writeText(password)                  // to write the text on clipboard
   }, [password])
 
-  useEffect(() => {
+  useEffect(() => {                                                // use effact
     passwordGenerator()
-  }, [length, numberAllowed, charAllowed, passwordGenerator])
+  }, [length, numberAllowed, charAllowed, passwordGenerator])              // to run again if any dependency will intrupted
   return (
     
     <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 bg-gray-800 text-orange-500">
